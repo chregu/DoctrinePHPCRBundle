@@ -35,7 +35,7 @@ class Configuration
                         ->scalarNode('url')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('user')->defaultNull()->end()
                         ->scalarNode('pass')->defaultNull()->end()
-                        ->scalarNode('transport')->defaultNull()->end()
+                        ->scalarNode('transport')->defaultValue('davex')->end()
                     ->end()
                 ->end()
             ->end();

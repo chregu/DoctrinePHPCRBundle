@@ -9,6 +9,9 @@
         <parameter key="jackalope.repository.class">Jackalope\Repository</parameter>
         <parameter key="jackalope.credentials.class">PHPCR\SimpleCredentials</parameter>
         <parameter key="jackalope.factory.class">Jackalope\Factory</parameter>
+
+        <parameter key="jackalope.davex.class">Jackalope\Transport\Davex\Client</parameter>
+        <parameter key="jackalope.doctrinedbal.class">Jackalope\Transport\DoctrineDBAL</parameter>
     </parameters>
 
     <services>
@@ -26,7 +29,16 @@
         <service id="jackalope.repository" class="%jackalope.repository.class%">
             <argument type="service" id="jackalope.factory" />
             <argument>%jackalope.options.url%</argument>
-            <argument>%jackalope.options.transport%</argument>
+            <argument type="service" id="jackalope.transport" />
+        </service>
+
+        <service id="jackalope.transport.davex" public="false" class="%jackalope.davex.class%">
+            <argument type="service" id="jackalope.factory" />
+            <argument>%jackalope.options.url%</argument>
+        </service>
+
+        <service id="jackalope.transport.doctrinedbal" public="false" class="%jackalope.doctrinedbal.class%">
+            <argument type="service" id="doctrine.dbal.default_connection" />
         </service>
 
         <service id="jackalope.factory" class="%jackalope.factory.class%" />
