@@ -7,12 +7,9 @@ class JackalopeLoader
     protected $container;
     protected $session;
 
-    protected $config;
-
-    public function __construct($container, $config)
+    public function __construct($container)
     {
         $this->container = $container;
-        $this->config = $config;
     }
 
     public function getSession()

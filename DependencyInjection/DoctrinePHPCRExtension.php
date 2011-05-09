@@ -36,7 +36,7 @@ class DoctrinePHPCRExtension extends Extension
     public function loadBackendDefaults(array $config, ContainerBuilder $container)
     {
         $options = array();
-        foreach (array('url', 'user', 'pass', 'workspace', 'transport') as $var) {
+        foreach (array('url', 'user', 'pass', 'workspace') as $var) {
             $options[$var] = $config[$var];
             $container->setParameter('jackalope.options.'.$var, $config[$var]);
         }
