@@ -31,11 +31,7 @@ class JackalopeLoader
         $node = $this->getSession()->getRootNode();
         $nodes = explode('/', trim($path, '/'));
         foreach ($nodes as $subpath) {
-            if ($node->hasNode($subpath)) {
-                $node = $node->getNode($subpath);
-            } else {
-                $node = $node->addNode($subpath);
-            }
+            $node = $node->hasNode($subpath) ? $node->getNode($subpath) : $node->addNode($subpath);
         }
         return $node;
     }
