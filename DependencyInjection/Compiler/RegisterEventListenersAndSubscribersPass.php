@@ -39,7 +39,7 @@ class RegisterEventListenersAndSubscribersPass implements CompilerPassInterface
     protected function registerSubscribers($prefix, $definition)
     {
         $subscribers = array_merge(
-            $this->container->findTaggedServiceIds('doctrine.common.event_subscriber'),
+            $this->container->findTaggedServiceIds('doctrine.phpcr.event_subscriber'),
             $this->container->findTaggedServiceIds($prefix.'_event_subscriber')
         );
 
@@ -57,7 +57,7 @@ class RegisterEventListenersAndSubscribersPass implements CompilerPassInterface
     protected function registerListeners($prefix, $definition)
     {
         $listeners = array_merge(
-            $this->container->findTaggedServiceIds('doctrine.common.event_listener'),
+            $this->container->findTaggedServiceIds('doctrine.phpcr.event_listener'),
             $this->container->findTaggedServiceIds($prefix.'_event_listener')
         );
 
