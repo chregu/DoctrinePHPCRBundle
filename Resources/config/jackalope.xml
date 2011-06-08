@@ -28,6 +28,9 @@
         <service id="jackalope.transport.davex" public="false" class="%jackalope.davex.class%">
             <argument type="service" id="jackalope.factory" />
             <argument>%jackalope.options.url%</argument>
+            <call method="setCheckLoginOnServer">
+                <argument>false</argument>
+            </call>
         </service>
 
         <service id="jackalope.transport.doctrinedbal" public="false" class="%jackalope.doctrinedbal.class%">
